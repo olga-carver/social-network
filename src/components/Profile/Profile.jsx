@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from '../Profile/Profile.module.css';
 
 const Profile = () => {
     return (
-        <section className="content">
+        <section className={classes.content}>
         <img src="" alt="" className="photo" />
         <div className="info">
           <p>Anton Egorov</p>

@@ -1,18 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Profile from './components/Profile';
+import classes from '../src/App.module.css';
+import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
+import Profile from './components/Profile/Profile';
 
 
 
 
 const App = () => {
   return (
-    <div className="App">
+    <div className={classes.App}>
       <Header />
-      <div className="wrapper">
+      <div className={classes.wrapper}>
         <Sidebar />
         <Profile />
       </div>
