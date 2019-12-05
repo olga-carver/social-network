@@ -5,11 +5,16 @@ ul {
 li {
   list-style: none;
 }
-.App {
+.app {
   padding: 0 15px;
 }
-.wrapper {
+.app-wrapper {
   display: grid;
   grid-template-columns: 1fr 5fr;
   grid-column-gap: 20px;
+}
+
+.app-wrapper-content {
+  padding: 15px;
+  background-color: #DACFFF;
 }
