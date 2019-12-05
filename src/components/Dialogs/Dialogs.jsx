@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Dialogs.module.css';
 
-const Dialog = () => {
+const Dialogs = () => {
     return (
         <section className={classes.dialogs}>
             Lets go!
@@ -9,4 +9,4 @@ const Dialog = () => {
     );
 }
 
-export default Dialog;
+export default Dialogs;

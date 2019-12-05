@@ -5,11 +5,10 @@ const Sidebar = () => {
     return (
 <nav className={classes.sidebar}>
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Messages</li>
-          <li>Friends</li>
-          <li>Video</li>
+          <li><a href="/news">News</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/dialogs">Dialogs</a></li>
+          <li><a href="/friends">Settings</a></li>
         </ul>
       </nav>
     );
