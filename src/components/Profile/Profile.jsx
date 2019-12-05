@@ -11,7 +11,8 @@ const Profile = () => {
           <small>Programmer</small>
           <p>Age: 30</p>
         </div>
-        <Post />
+        <Post message='I am learning react!' likecount='15'/>
+        <Post message='It is so exiting!' likecount='20'/>
       </section>
     );
 }
