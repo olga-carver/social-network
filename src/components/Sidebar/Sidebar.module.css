@@ -2,3 +2,9 @@
   padding: 15px;
   background-color: #FBFF8F;
 }
+a {
+  text-decoration: none;
+}
+.activeLink {
+  color: #000000;
+}
