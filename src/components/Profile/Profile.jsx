@@ -1,20 +1,23 @@
 import React from 'react';
 import classes from '../Profile/Profile.module.css';
 import Post from './MyPosts/Post/Post';
+import PersonalInfo from './PersonalInfo/PersonalInfo';
+
+let postData = [
+  { message: "I am learning react!", likecount: 13 },
+  { message: "It is so exiting!", likecount: 17 }
+]
+
+let postItem = postData
+  .map((post) => <Post message={post.message} likecount={post.likecount} />);
 
 const Profile = () => {
-    return (
-        <section className={classes.content}>
-        <img src="" alt="" className="photo" />
-        <div className="info">
-          <p>Anton Egorov</p>
-          <small>Programmer</small>
-          <p>Age: 30</p>
-        </div>
-        <Post message='I am learning react!' likecount='15'/>
-        <Post message='It is so exiting!' likecount='20'/>
-      </section>
-    );
+  return (
+    <section className={classes.content}>
+      <PersonalInfo />
+      {postItem}
+    </section>
+  );
 }
 
 export default Profile;
