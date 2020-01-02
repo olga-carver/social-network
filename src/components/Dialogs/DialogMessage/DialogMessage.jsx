@@ -5,6 +5,8 @@ const DialogMessage = (props) => {
     return (
         <div className={classes.messagesItem}>
             <p>{props.message}</p>
+            <div className={classes.addMessage}>                
+            </div>
         </div>
     );
 }
