@@ -9,7 +9,9 @@ const Profile = (props) => {
   return (
     <section className={classes.content}>
       <PersonalInfo/>
-      <MyPosts postData={props.postData} addPost={props.addPost}/>
+      <MyPosts profilePage={props.profilePage} 
+      addPost={props.addPost}
+      updateNewPostText={props.updateNewPostText}/>
     </section>
   );
 }

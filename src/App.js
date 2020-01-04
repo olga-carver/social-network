@@ -10,23 +10,25 @@ import { Route } from 'react-router-dom';
 
 const App = (props) => {
   return (
-      <div className="app">
-        <Header />
-        <div className="app-wrapper">
-          <Sidebar />
-          <div className="app-wrapper-content">
-            <Route path='/profile' render={
-              () => <Profile
-                postData={props.state.profilePage.postData} 
-                addPost-={props.addPost}/>} />
-            <Route path='/dialogs' render={
-              () => <Dialogs
-                messagesData={props.state.dialogsPage.messagesData}
-                dialogsData={props.state.dialogsPage.dialogsData} />} />
-          </div>
+    <div className="app">
+      <Header />
+      <div className="app-wrapper">
+        <Sidebar />
+        <div className="app-wrapper-content">
+          <Route path='/profile' render={
+            () => <Profile
+              profilePage={props.state.profilePage}
+              addPost={props.addPost}
+              updateNewPostText={props.updateNewPostText} />} />
+          <Route path='/dialogs' render={
+            () => <Dialogs
+              dialogsPage={props.state.dialogsPage} 
+              sendMessage={props.sendMessage}
+              updateNewMessageText={props.updateNewMessageText}/>} />
         </div>
       </div>
-    
+    </div>
+
   );
 }
 
