@@ -1,64 +1,70 @@
-import { renderEntireFile } from "../render";
+let store = {
 
-let state = {
-    profilePage: {
-        postData: [
-            { message: "I am learning react!", likecount: 13 },
-            { message: "It is so exiting!", likecount: 17 }
-        ],
-        newPostText: ' '
+    _state: {
+        profilePage: {
+            postData: [
+                { message: "I am learning react!", likecount: 13 },
+                { message: "It is so exiting!", likecount: 17 }
+            ],
+            newPostText: ' '
+        },
+
+        dialogsPage: {
+            dialogsData: [
+                { id: 1, name: "Olga" },
+                { id: 2, name: "Ilya" },
+                { id: 3, name: "Timofey" },
+                { id: 4, name: "Lena" }
+            ],
+
+            messagesData: [
+                { message: "Hi!" },
+                { message: "Hi!" },
+                { message: "Hi!" },
+                { message: "Hi!" }
+            ],
+
+            newDialogMessage: 'hi'
+        }
     },
 
-    dialogsPage: {
-        dialogsData: [
-            { id: 1, name: "Olga" },
-            { id: 2, name: "Ilya" },
-            { id: 3, name: "Timofey" },
-            { id: 4, name: "Lena" }
-        ],
-        
-        messagesData: [
-            { message: "Hi!" },
-            { message: "Hi!" },
-            { message: "Hi!" },
-            { message: "Hi!" }
-        ],
+    _callSubscriber() {
+        console.log('State was changed')
+    },
 
-        newDialogMessage: 'hi'
+    getState() {
+        return this._state;
+    },
+
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likecount: 0
+            };
+            this._state.profilePage.postData.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this.getState());
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this.getState());
+        } else if (action.type === 'SEND-MESSAGE') {
+            let newMessage = {
+                message: this._state.dialogsPage.newDialogMessage
+            }
+            this._state.dialogsPage.messagesData.push(newMessage);
+            this._state.dialogsPage.newDialogMessage = '';
+            this._callSubscriber(this.getState());
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogsPage.newDialogMessage = action.newMessage;
+            this._callSubscriber(this.getState());
+        }
     }
 }
 
-export let addPost = () => {
-    let newPost = {
-        id: 5,
-        message: state.profilePage.newPostText,
-        likecount: 0
-    };
-    state.profilePage.postData.push(newPost);
-    state.profilePage.newPostText = '';
-    renderEntireFile(state);
-}
-
-export let updateNewPostText = (newText)  => {
-    state.profilePage.newPostText = newText;
-    renderEntireFile(state);
-}
-
-export let sendMessage = () => {
-    let newMessage =  {
-        message: state.dialogsPage.newDialogMessage
-    }    
-    state.dialogsPage.messagesData.push(newMessage);
-    state.dialogsPage.newDialogMessage = '';
-    renderEntireFile(state);
-}
-
-export let updateNewMessageText = (newMessage)  => {
-    state.dialogsPage.newDialogMessage = newMessage;
-    renderEntireFile(state);
-}
-
-
-
-
-export default state;
+export default store;

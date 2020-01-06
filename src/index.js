@@ -1,8 +1,20 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import { renderEntireFile } from "./render";
-import state from "./redux/state";
+import store from "./redux/state";
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
-renderEntireFile(state);
+ let callSubscriber = (state) => {
+    debugger;
+    ReactDOM.render(
+        <BrowserRouter>
+            <App state={state} dispatch={store.dispatch.bind(store)}/>
+        </BrowserRouter>, document.getElementById('root'));
+}
+
+callSubscriber(store.getState());
+store.subscribe(callSubscriber);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
