@@ -1,3 +1,6 @@
+import { profileReduser } from './profileReduser';
+import {dialogsReduser} from './dialogsReduser';
+
 let store = {
 
     _state: {
@@ -40,31 +43,16 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likecount: 0
-            };
-            this._state.profilePage.postData.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this.getState());
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this.getState());
-        } else if (action.type === 'SEND-MESSAGE') {
-            let newMessage = {
-                message: this._state.dialogsPage.newDialogMessage
-            }
-            this._state.dialogsPage.messagesData.push(newMessage);
-            this._state.dialogsPage.newDialogMessage = '';
-            this._callSubscriber(this.getState());
-        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-            this._state.dialogsPage.newDialogMessage = action.newMessage;
-            this._callSubscriber(this.getState());
-        }
+    dispatch(action) {   
+        this._state.profilePage = profileReduser(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReduser(this._state.dialogsPage, action);
+               
+        this._callSubscriber(this.getState());
+        
     }
 }
+
+
+
 
 export default store;
