@@ -3,7 +3,7 @@ import '../src/App.css';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 import { Route } from 'react-router-dom';
 
 
@@ -16,13 +16,11 @@ const App = (props) => {
         <Sidebar />
         <div className="app-wrapper-content">
           <Route path='/profile' render={
-            () => <Profile
-              profilePage={props.state.profilePage}
-              dispatch={props.dispatch} />} />
+            () => <Profile store={props.store}/>
+            } />
           <Route path='/dialogs' render={
-            () => <Dialogs
-              dialogsPage={props.state.dialogsPage} 
-              dispatch={props.dispatch}/>} />
+            () => <DialogsContainer store={props.store}
+             />} />
         </div>
       </div>
     </div>

@@ -47,7 +47,7 @@ let store = {
         this._state.profilePage = profileReduser(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReduser(this._state.dialogsPage, action);
                
-        this._callSubscriber(this.getState());
+        this._callSubscriber(this._state);
         
     }
 }

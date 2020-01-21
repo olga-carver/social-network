@@ -1,7 +1,15 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-export const profileReduser = (state, action) => {
+let initialState = {
+    postData: [
+        { message: "I am learning react!", likecount: 13 },
+        { message: "It is so exiting!", likecount: 17 }
+    ],
+    newPostText: ' '
+}
+
+export const profileReduser = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -9,13 +17,18 @@ export const profileReduser = (state, action) => {
                 message: state.newPostText,
                 likecount: 0
             };
-            state.postData.push(newPost);
-            state.newPostText = '';
-            return state;
+            let stateCopy = {...state};
+            stateCopy.postData = [...state.postData];
+            stateCopy.postData.push(newPost);
+            stateCopy.newPostText = '';
+            return stateCopy;
 
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText;
-            return state;
+        case UPDATE_NEW_POST_TEXT: {
+            let stateCopy = {...state};
+            stateCopy.newPostText = action.newText;
+            return stateCopy;
+        }
+            
         default:
             return state;
 
