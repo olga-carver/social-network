@@ -1,7 +1,6 @@
 .wrap {
     display: grid;
-    grid-template-columns: 1fr 8fr 1fr;
-    align-items: center;
+    grid-template-columns: 1fr 8fr 1fr;    
     padding: 10px 0 10px 0;
     border-bottom: 1px solid #fff;
 }
@@ -16,8 +15,27 @@
     justify-self: center;
     
 }
+.imgFollow {
+    margin-left: 20px;
+}
 
 .name {
+    align-self: start;
     font-weight: bold;
     font-size: 19px;
+}
+
+.pages{
+text-align: center;
+}
+
+.page{
+display: inline-block;
+margin-right: 5px;
+cursor: pointer;
+}
+
+.activePage {
+    font-weight: bold;
+    font-size: 22px;
 }
