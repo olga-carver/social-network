@@ -49,4 +49,4 @@ export const dialogsReduser = (state = initialState, action) => {
 export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
 export const updateNewMessageTextActionCreator = (text) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newMessage: text });
 
-// export default dialogsReduser;
+export default dialogsReduser;

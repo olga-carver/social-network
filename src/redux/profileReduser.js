@@ -1,12 +1,16 @@
+import { profileAPI } from '../api/api';
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
     postData: [
         { message: "I am learning react!", likecount: 13 },
         { message: "It is so exiting!", likecount: 17 }
     ],
-    newPostText: ' '
+    newPostText: ' ',
+    profile: null
 }
 
 export const profileReduser = (state = initialState, action) => {
@@ -30,6 +34,13 @@ export const profileReduser = (state = initialState, action) => {
             };
             
         }
+
+        case SET_USER_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile
+            };
+        }
             
         default:
             return state;
@@ -39,5 +50,13 @@ export const profileReduser = (state = initialState, action) => {
 
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 
-    // export default profileReduser;
+export const setProfile = (userId) => (dispatch) => {
+    profileAPI.setProfile(userId)
+        .then(data => {            
+            dispatch(setUserProfile(data));         
+        }); 
+}
+
+export default profileReduser;

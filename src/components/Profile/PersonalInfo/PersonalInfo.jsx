@@ -1,14 +1,23 @@
 import React from 'react';
 import classes from '../PersonalInfo/PersonalInfo.module.css';
+import Preloader from '../../Preloader/Preloader';
 
-const PersonalInfo = () => {
+
+const PersonalInfo = (props) => {
+
+    if (!props.profile) {
+        return <Preloader />
+    }
+
     return (
         <div className={classes.personalInfo}>
-            <img src="" alt="" className="photo" />
+            <div className={classes.profileImg}>
+            <img src={props.profile.photos.large} alt="" className="photo" />
+            </div>
             <div className="info">
-                <p>Anton Egorov</p>
-                <small>Programmer</small>
-                <p>Age: 30</p>
+                <p>{props.profile.fullName}</p>
+                <small>{props.profile.aboutMe}</small>
+                <p>Age: 30</p>                
             </div>
         </div>
     );
