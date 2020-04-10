@@ -1,40 +1,62 @@
 import React from 'react';
+import classes from '../Profile/Profile.module.css';
 
 
 
-class PersonalStatus extends React.Component {
+class ProfileStatus extends React.Component {
+
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
-    activateEditMode () {
+    activateEditMode = () => {
         this.setState({
             editMode: true
         })
     }
 
-    deactivateEditMode () {
+    deactivateEditMode = () => {
         this.setState({
             editMode: false
         })
+        this.props.updateUserStatus(this.state.status)
     }
 
-    render() {
-        return (
-            <div>
-                {!this.state.editMode &&
-                    <div>
-                        <span onDoubleClick={this.activateEditMode.bind(this)}>{this.props.status}</span>
-                    </div>
-                }
-                {this.state.editMode &&
-                    <div>
-                        <textarea autoFocus={true} onBlur={this.deactivateEditMode.bind(this)} value={this.props.status}></textarea>
-                    </div>
-                }
-            </div>
-        );
+    onUserStatusChange = (e) => {
+        this.setState({
+            status:  e.currentTarget.value
+        });
+    }
+
+    componentDidUpdate(prevProps, prevState) {        
+
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            });
     }
 }
 
-export default PersonalStatus;
+    render() {
+        return (
+            <div>                
+               { !this.state.editMode &&
+                    <div className={classes.status}>
+                        <span onDoubleClick={this.activateEditMode}>{this.props.status || "-----"}</span>
+                    </div>
+                }
+                { this.state.editMode &&
+                    <div>
+                        <textarea onChange={this.onUserStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status}></textarea>
+                    </div>
+                }
+            </div>
+                
+         )
+        
+    }
+        
+}
+
+export default ProfileStatus;

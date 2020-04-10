@@ -8,12 +8,13 @@ import ProfileStatus from './ProfileStatus';
 
 const Profile = (props) => {
   
+  
   return (
-    <section className={classes.content}>
+    <div className={classes.content}>
       <PersonalInfo profile={props.profile}/>
-      <ProfileStatus status={"Hello, that is my status"}/>
+      <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
       <MyPostsContainer store={props.store}/>
-    </section>
+    </div>
   )
 }
 

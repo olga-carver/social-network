@@ -43,13 +43,42 @@ export const profileAPI = {
         .then(response => {
             return response.data;
         })
+    },
+
+    getUserStatus(userId) {
+        return instance.get('profile/status/' + userId)
+        .then(response => {
+            return response.data;
+        })
+    },
+
+    updateUserStatus(status) {
+        return instance.put('profile/status', {status:status})
+        .then(response => {
+            return response.data;
+        })
     }
+
 }
 
 
 export const authAPI = {
     getAuthData(id, email, login) {
         return instance.get(`auth/me`)
+        .then(response => {
+            return response.data;
+        })
+    },
+
+    login(email, password, rememberMe) {
+        return instance.post(`auth/login`, { email, password, rememberMe })
+        // .then(response => {
+        //     return response.data;
+        // })
+    },
+
+    logout() {
+        return instance.delete(`auth/login`)
         .then(response => {
             return response.data;
         })
