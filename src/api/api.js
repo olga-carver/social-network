@@ -63,7 +63,7 @@ export const profileAPI = {
 
 
 export const authAPI = {
-    getAuthData(id, email, login) {
+    getAuthData() {
         return instance.get(`auth/me`)
         .then(response => {
             return response.data;
@@ -72,9 +72,9 @@ export const authAPI = {
 
     login(email, password, rememberMe) {
         return instance.post(`auth/login`, { email, password, rememberMe })
-        // .then(response => {
-        //     return response.data;
-        // })
+        .then(response => {
+            return response.data;
+        })
     },
 
     logout() {

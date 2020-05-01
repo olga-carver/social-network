@@ -3,12 +3,13 @@ import { Field, reduxForm } from 'redux-form';
 import { login } from '../../redux/auth-reduser';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import classes from '../Login/Login.module.css';
+import classes from '../Login/Login.module.scss';
+import Preloader from '../Preloader/Preloader';
 
 
 const LoginForm = (props) => {
     return (
-        <form action="" onSubmit={props.handleSubmit}>
+        <form onSubmit={props.handleSubmit}>
             <div>
             {props.error && <p className={classes.formSummaryError}>
                 {props.error}</p>
@@ -37,12 +38,15 @@ const Login = (props) => {
     }
 
     if (props.isAuth) {
+        console.log(props.isAuth);
         return <Redirect to={"/profile"}/>        
     }
 
-    return <div >
+    return <div>
+        <div className="wrapperBlock">
         <h1>Login</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
+        </div>
     </div>
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../Header/Header.module.css';
+import classes from '../Header/Header.module.scss';
 import logo from '../../leaf.png';
 import { NavLink } from 'react-router-dom';
 

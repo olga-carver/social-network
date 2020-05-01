@@ -36,6 +36,7 @@ export const getAuthUserData = () => (dispatch) => {
         if (data.resultCode === 0) {
             let { id, email, login} = data.data;
             dispatch(setAuthUserData(id, email, login, true));
+       
             
         }
     });
@@ -43,15 +44,14 @@ export const getAuthUserData = () => (dispatch) => {
 
 
 export const login = (email, password, rememberMe) => (dispatch) => {
-
     authAPI.login(email, password, rememberMe)
     .then(data => {
         if (data.resultCode === 0) {
-            dispatch(getAuthUserData());            
-        
-        } else {
-            console.log(data.data.messages);
-            let message = data.data.messages.length > 0 ? data.data.messages[0] : "Some error";
+            dispatch(getAuthUserData());           
+       
+    } else {
+            let message = data.data.messages.length > 0 
+            ? data.data.messages[0] : "Some error";
             dispatch(stopSubmit("login", {_error: message}));
         }
 

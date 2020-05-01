@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../PersonalInfo/PersonalInfo.module.css';
+import classes from '../PersonalInfo/PersonalInfo.module.scss';
 import Preloader from '../../Preloader/Preloader';
 
 const PersonalInfo = (props) => {

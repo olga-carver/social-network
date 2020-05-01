@@ -1,6 +1,7 @@
 import React from 'react';
-import classes from './Users.module.css';
+import classes from './Users.module.scss';
 import { NavLink } from "react-router-dom";
+import { avatar } from '../../images/users/avatar.svg';
 
 
 const Users = (props) => {
@@ -19,34 +20,46 @@ const Users = (props) => {
           })
         }
       </ul>
-      { 
+
+      <div  className={classes.outUserName}>
+      {
         props.users.map(u => <div key={u.id}>
-          <div className={classes.wrap}>
+
+          <div className={classes.userLinkWrap}>
             <div className={classes.imgFollow}>
               <NavLink to={'/profile/' + u.id}>
-                <img className={classes.profileImg} src={u.photos.small} alt="" />
+                <div className={classes.profileImg}>
+                { 
+                  u.photos.small
+                  ? <img  src={u.photos.small} alt="" />
+                  : <img  src={avatar} alt="" />
+                  }
+                </div>
               </NavLink>
+              </div>
+
+              <div className={classes.userInfo}>
+              <p className={classes.name}>{u.name}</p>
+              <p className={classes.status}>{u.status}</p>
               {
                 u.followed
-                  ? <button disabled={props.followingInProgress
+                  ? <button className={classes.followBtn} disabled={props.followingInProgress
                     .some(id => id === u.id)} onClick={() => {props.unfollow(u.id)}
                   }>Unfollow</button>
 
-                  : <button disabled={props.followingInProgress
+                  : <button className={classes.followBtn} disabled={props.followingInProgress
                     .some(id => id === u.id)} onClick={() => {props.follow(u.id);}
                     }>Follow</button>
 
               }
-            </div>
-            <div>
-              <p className={classes.name}>{u.name}</p>
-              <p>{u.status}</p>
-            </div>
-            {/* <div>hey</div> тут должен быть показан город */}
+              </div>      
+
           </div>
+
         </div>
         )
       }
+      </div>
     </div>
   )
 

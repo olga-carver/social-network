@@ -1,5 +1,5 @@
 import React from 'react';
-import '../src/App.css';
+import '../src/App.scss';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import { Route } from 'react-router-dom';
@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import Preloader from './components/Preloader/Preloader';
+import { withAuthRedirect } from './hoc/withAuthRedirect';
 
 class App extends React.Component {
 
@@ -59,6 +60,6 @@ let mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps, { initializeApp }),
-  withRouter  
+  withRouter
 )(App);
 
