@@ -14,6 +14,8 @@ import { withRouter } from 'react-router-dom';
 import Preloader from './components/Preloader/Preloader';
 import { withAuthRedirect } from './hoc/withAuthRedirect';
 
+import { Redirect } from 'react-router-dom';
+
 class App extends React.Component {
 
   componentDidMount() {
@@ -27,34 +29,40 @@ class App extends React.Component {
       return <Preloader/>
     }
 
-    return (
-      <div className="app">
-        <HeaderContainer store={this.props.store} />
-        <div className="app-wrapper">
-          <Sidebar store={this.props.store}/>
-          <div className="app-wrapper-content">
-            <Route path='/profile/:userId?' render={
-              () => <ProfileContainer store={this.props.store} />
-            } />
-            <Route path='/dialogs' render={
-              () => <DialogsContainer store={this.props.store}
-              />} />
-            <Route path='/users' render={
-              () => <UsersContainer store={this.props.store}
-              />} />
-            <Route path='/login' render={
-              () => <Login store={this.props.store}
-              />} />
+
+    if (this.props.isAuth) {
+      return (
+        <div className="app">
+          <HeaderContainer store={this.props.store} />
+          <div className="app-wrapper">
+            <Sidebar store={this.props.store}/>
+            <div className="app-wrapper-content">
+              <Route path='/profile/:userId?' render={
+                () => <ProfileContainer store={this.props.store} />
+              } />
+              <Route path='/dialogs' render={
+                () => <DialogsContainer store={this.props.store}
+                />} />
+              <Route path='/users' render={
+                () => <UsersContainer store={this.props.store}
+                />} />
+              <Route path='/login' render={
+                () => <Login store={this.props.store}
+                />} />
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else return <Login/>
+
+    
   }
 }
 
 let mapStateToProps = (state) => {
   return {
-    initialized: state.app.initialized
+    initialized: state.app.initialized,
+    isAuth: state.auth.isAuth
   }
 }
 

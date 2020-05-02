@@ -1,2 +1,84 @@
 $loginBgColor: #37474f;
+$secondColor: #b2ff59;
+$thirdColor: #62727b;
+$fourthColor: #102027;
+$fifthColor: #7ecb20;
 
+html {
+    margin: 0;
+    padding: 0;
+    top: 0;bottom: 0;left: 0;right: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+    top: 0;bottom: 0;left: 0;right: 0;
+}
+
+.body {
+    
+    background-color: $loginBgColor;
+    height: 100vh;
+}
+
+.wrapperBlock {
+    position: absolute;
+    background-color: $thirdColor;
+    box-shadow: 0px 0px 10px  $fourthColor;
+    border-radius: 2px;
+    width: 350px;
+    height: 400px;
+    margin-left: 20%;
+    margin-top: 7%;
+    padding: 40px;
+
+    .content {
+        
+    }
+
+    h1 {
+        text-align: center;
+        color: $secondColor;
+        font-weight: 500;
+    }
+    
+}
+
+.loginImg {
+    width: 400px;
+    transform: translate(750px, 10px);
+}
+
+.loginBtn {
+        cursor: pointer;
+        background-color: $secondColor;
+        font-size: 16px;
+        width: 100%;
+        height: 40px;
+        outline: none;
+        border: none;
+        margin-top: 20px;
+        border-radius: 2px;
+        &:hover {
+            background-color: $fifthColor;
+            transition: 0.5s;
+            
+        }
+    }
+
+    .loginInput {
+        outline: none;
+        border-radius: 2px;
+        border: none;
+        width: 100%;
+        height: 40px;
+        margin-bottom: 20px;
+        padding: 5px 0px;
+        font-size: 14px;
+    }
+
+    .loginCheckbox {
+        span {
+            color: #fff;
+        }
+    }
