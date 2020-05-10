@@ -48,7 +48,7 @@ class ProfileStatus extends React.Component {
                 }
                 { this.state.editMode &&
                     <div>
-                        <textarea onChange={this.onUserStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status}></textarea>
+                        <textarea className={classes.newStatus} onChange={this.onUserStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status}></textarea>
                     </div>
                 }
             </div>

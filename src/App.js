@@ -17,26 +17,23 @@ import { withAuthRedirect } from './hoc/withAuthRedirect';
 import { Redirect } from 'react-router-dom';
 
 class App extends React.Component {
-
   componentDidMount() {
     this.props.initializeApp();        
 }
-
-
-  render() {   
-
+  render() { 
     if (!this.props.initialized) {
       return <Preloader/>
     }
-
-
     if (this.props.isAuth) {
       return (
         <div className="app">
           <HeaderContainer store={this.props.store} />
           <div className="app-wrapper">
-            <Sidebar store={this.props.store}/>
+            {/* <Sidebar store={this.props.store}/> */}
             <div className="app-wrapper-content">
+            <Route exact path='/' render={
+                () => <ProfileContainer store={this.props.store} />
+              } />
               <Route path='/profile/:userId?' render={
                 () => <ProfileContainer store={this.props.store} />
               } />
@@ -53,9 +50,7 @@ class App extends React.Component {
           </div>
         </div>
       );
-    } else return <Login/>
-
-    
+    } else return <Login/>  
   }
 }
 
@@ -65,7 +60,6 @@ let mapStateToProps = (state) => {
     isAuth: state.auth.isAuth
   }
 }
-
 export default compose(
   connect(mapStateToProps, { initializeApp }),
   withRouter

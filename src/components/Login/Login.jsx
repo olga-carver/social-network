@@ -17,10 +17,10 @@ const LoginForm = (props) => {
             }
             </div>
             <div>
-                <Field  className={classes.loginInput} type="text" placeholder="  E-mail" name="email" component="input"/>
+                <Field  className={classes.loginInput} type="text" placeholder="E-mail" name="email" component="input"/>
                 </div>
             <div>
-                <Field className={classes.loginInput} type="text" placeholder="  Пароль" name="password" component="input"/>
+                <Field className={classes.loginInput} type="text" placeholder="Пароль" name="password" component="input"/>
                 </div>
             <div>
                 <Field className={classes.loginCheckbox} type="checkbox" name="rememberMe" component="input"/><span>Запомнить меня</span>
@@ -51,7 +51,7 @@ const Login = (props) => {
         </div>
         
         </div>
-        <img className={classes.loginImg} src={waterball} alt="Welcome"/>
+        {/* <img className={classes.loginImg} src={waterball} alt="Welcome"/> */}
     </div>
 }
 

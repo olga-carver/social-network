@@ -1,10 +1,9 @@
 import React from 'react';
-import classes from './Dialogs.module.css';
-import DialogItem from '../Dialogs/DialogItem/DialogItem';
-import DialogMessage from '../Dialogs/DialogMessage/DialogMessage';
+import classes from './Dialogs.module.scss';
 import { Field, reduxForm } from 'redux-form';
 import { required, maxLengthCreator } from '../common/FormValidator/formValidator';
 import { Textarea } from '../common/FormControls/formControls';
+import { NavLink } from 'react-router-dom';
 
 const maxLength10 = maxLengthCreator(10);
 
@@ -19,7 +18,7 @@ const Dialogs = (props) => {
         props.sendMessage(values.newDialogMessage);
     };
 
-
+ 
     const MessageForm = (props) => {
         return (
             <form onSubmit={props.handleSubmit}>
@@ -56,3 +55,23 @@ const Dialogs = (props) => {
 }
 
 export default Dialogs;
+
+
+export const DialogItem = (props) => {
+    let path = "/dialogs/" + props.id;
+    return (
+        <div className={classes.dialog}>
+            <NavLink to={path}>{props.name}</NavLink>
+        </div>
+    );
+}
+
+export const DialogMessage = (props) => {
+    return (
+        <div className={classes.messagesItem}>
+            <p>{props.message}</p>
+            <div className={classes.addMessage}>                
+            </div>
+        </div>
+    );
+}

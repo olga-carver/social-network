@@ -4,11 +4,10 @@ import { logout } from '../../redux/auth-reduser';
 import { connect } from 'react-redux';
 
 class HeaderComponent extends React.Component {
-
    
     render() {
         return <div>
-            <Header {...this.props} />
+            <Header {...this.props}  />
         </div>
 
     }

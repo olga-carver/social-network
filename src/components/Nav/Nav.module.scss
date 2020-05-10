@@ -1,0 +1,45 @@
+@import "../common/Styles/commonStyles.scss";
+
+.nav {  
+  ul {
+    li {
+      display: inline-block;
+      padding: 0 10px;
+      .menuLink {
+        color: $mainSecondColor;
+        font-size: 13px;
+        &:hover {
+          color: $mainFirstlLightColor;
+          
+        }
+      }
+    }
+  }
+}
+.menuIcon {
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px;
+}
+
+@media (max-width: 540px) {
+  .nav {
+    ul {      
+        position: absolute;  
+      li {        
+          display: block;
+          background-color: $mainFirstColor;
+          padding: 10px 20px;
+          &:hover {
+            background-color: $mainFirstlLightColor; 
+          }
+        .menuLink {
+          &:hover {
+            color: $mainSecondColor;         
+          }
+        }
+      }
+    }
+  } 
+}

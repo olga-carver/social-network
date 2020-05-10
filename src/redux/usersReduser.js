@@ -15,6 +15,7 @@ let initialState = {
     pageSize: 30,
     totalCount: 0,
     currentPage: 1,
+    // portionSize: 5,
     isFetching: false,
     followingInProgress: []
 
@@ -93,7 +94,6 @@ export const toggleFollowingProgress = (isFetching) => ({ type: TOGGLE_FOLLOWING
 
 export const requestUsers = (currentPage, pageSize) => {
     return (dispatch) => {
-
         dispatch(toggleIsFetching(true));
         userAPI.getUsers(currentPage, pageSize)
             .then(data => {
@@ -108,7 +108,6 @@ export const requestUsers = (currentPage, pageSize) => {
 
 export const unfollow = (userId) => {
     return (dispatch) => {
-
         dispatch(toggleFollowingProgress(true, userId));
         followAPI.unfollowUser(userId)
             .then(data => {
@@ -121,8 +120,7 @@ export const unfollow = (userId) => {
 }
 
 export const follow = (userId) => {
-    return (dispatch) => {
-        
+    return (dispatch) => {        
         dispatch(toggleFollowingProgress(true, userId));
         followAPI.followUser(userId)
             .then(data => {

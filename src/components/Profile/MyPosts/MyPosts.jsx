@@ -1,6 +1,5 @@
 import React from 'react';
-import classes from './MyPosts.module.css';
-import Post from './Post/Post';
+import classes from './MyPosts.module.scss';
 import { Field, reduxForm } from 'redux-form';
 import { required, maxLengthCreator } from '../../common/FormValidator/formValidator';
 import { Textarea } from '../../common/FormControls/formControls';
@@ -9,19 +8,19 @@ const maxLength10 = maxLengthCreator(10);
 
 const MyPosts = (props) => {
     let postItem = props.postData
-        .map((post) => <Post message={post.message} likecount={post.likecount}/>);
+        .map((post) => 
+        <Post message={post.message} likecount={post.likecount}/>
+    );
 
     let addNewPost = (values) => {
         props.addPost(values.newPostText);
     }
-
-
     const PostForm = (props) => {
         return (
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field type="text" 
-                    placeholder="What's new?" 
+                    <Field className={classes.newPostText} type="text" 
+                    placeholder="Что нового?" 
                     name="newPostText" 
                     component={Textarea}
                     validate={[required, maxLength10]}
@@ -29,7 +28,7 @@ const MyPosts = (props) => {
                     />
                     </div>                
                 <div>                
-                    <button>Add Post</button>
+                    <button className={classes.sendBtn}>Отправить</button>
                     </div>
             </form>
         )
@@ -38,9 +37,9 @@ const MyPosts = (props) => {
     const PostReduxForm = reduxForm({form: 'post'})(PostForm);
     
     return (
-        <div className={classes.myposts}>
+        <div className={classes.myPosts}>
             <div className={classes.addPost}>
-                <PostReduxForm onSubmit={addNewPost}/>                
+                <PostReduxForm onSubmit={addNewPost} />                
             </div>
             {postItem}
         </div>
@@ -49,3 +48,18 @@ const MyPosts = (props) => {
 }
 
 export default MyPosts;
+
+export const Post = (props) => {
+ 
+
+    return (
+      <div className={classes.blog}>
+        <div className={classes.post}>
+          <img src='' alt="avatar"/>
+         <div>{props.message}</div>
+    <button>like {props.likecount}</button>
+        </div>
+      </div>
+    );
+  }
+  

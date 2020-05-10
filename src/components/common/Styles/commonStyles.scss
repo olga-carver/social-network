@@ -1,0 +1,48 @@
+//colors
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap');
+
+$mainFirstColor: #37474f;
+$mainSecondColor: #b2ff59;
+$mainFirstlLightColor: #62727b;
+$mainFirstlDarkColor: #102027;
+$mainSecondDarkColor: #7ecb20;
+$bgColor: #E9EBEE;
+
+$regularFont: 'Ubuntu', sans-serif;
+
+html {
+    margin: 0;
+    padding: 0;
+    top: 0;bottom: 0;left: 0;right: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+    top: 0;bottom: 0;left: 0;right: 0;
+    font-family: $regularFont;
+    background-color: $bgColor;
+}
+
+a {
+    outline: none;
+}
+
+button {
+    border: none;
+}
+
+button:active, button:focus, input:active, input:focus {
+    outline: none !important;
+  }
+  button::-moz-focus-inner {
+    border: 0 !important;
+  }
+
+ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    list-style: none;
+  }

@@ -1,13 +1,61 @@
+@import "../common/Styles/commonStyles.scss";
+
 .header {
     display: grid;
     grid-template-columns: repeat(2, auto);
     justify-content: space-between;
+    background-color: $mainFirstColor;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    padding: 10px 15px;
-    margin-bottom: 20px;
+    padding: 15px 200px;
+    margin-bottom: 30px;
+
+    .loginLink {
+        p {
+            display: inline-block;
+            color: #fff;
+        }
+    }
     img {
+        display: none;
         width: 30px;
         display: inline;
         align-self: center;
     }
+
+    .logOutLink {
+        cursor: pointer;
+        color: $mainSecondColor;
+        background-color: transparent;
+        font-size: 13px;
+        &:hover {
+          color: $mainFirstlLightColor;          
+        }
+    }
+
+    @media (max-width: 960px) {
+        padding: 15px 50px;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 720px) {
+        padding: 15px 15px;
+    }
 }
+
+.smallScreenNav {
+    display: none;
+}
+
+.bigScreenNav {
+    display: block;
+}
+
+@media (max-width: 540px) {
+    .bigScreenNav {
+        display: none;
+    }
+    .smallScreenNav {
+        display: block;
+    }
+}
+

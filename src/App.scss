@@ -1,28 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap');
+@import "./components/common/Styles/commonStyles.scss";
 
-$regularFont: 'Ubuntu', sans-serif;
-
-body {
-  font-family: $regularFont;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-li {
-  list-style: none;
-}
 .app {
-  padding: 0 15px;
+  // padding: 0 15px;
 }
 .app-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-column-gap: 15px;
+  // display: grid;
+  // grid-template-columns: 1fr 5fr;
+  // grid-column-gap: 15px;
 }
 
 .app-wrapper-content {
-  padding: 15px;
-  border-left: 5px solid #61D89F;
+  padding: 0 200px;
+  @media (max-width: 960px) {
+    padding: 0 50px;
+  }
+  @media (max-width: 720px) {
+    padding: 0 15px;
+  }  
 }
